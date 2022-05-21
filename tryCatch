@@ -1,0 +1,35 @@
+package com.mycompany.aula8;
+
+import javax.swing.JOptionPane;
+
+public class exercicioITBI {
+
+    public static void main(String[] args) {
+
+        double vt, vv, percent;
+        boolean invalido = true;
+       
+        do{
+        try {
+            vt = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor da transação:"));
+            vv = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor venal fornecido pela Prefeitura:"));
+            percent = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor percentual do Imposto aplicado: "));
+            if (vt > vv) {
+                double itbi = (vt * percent) / 100;
+                JOptionPane.showMessageDialog(null, "Calculo ITBI = " + itbi);
+
+            } else if (vt < vv) {
+                double itbivv = (vv * percent) / 100;
+                JOptionPane.showMessageDialog(null, "Calculo ITBI = " + itbivv);
+            }
+            invalido = false;
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Favor, Digitar somente números!\n " +e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+
+        }
+       }while(invalido);
+
+    }
+
+}
